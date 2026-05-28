@@ -11,7 +11,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   }, [pathname]);
 
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col bg-[var(--bg-primary)] text-[var(--text-primary)] transition-colors duration-200">
       <Navbar />
       <main className="flex-1 pt-16 page-enter" key={pathname}>
         {children}

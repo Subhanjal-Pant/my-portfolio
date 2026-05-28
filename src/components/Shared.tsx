@@ -22,7 +22,10 @@ export function useReveal() {
 
 export function SectionLabel({ children }: { children: React.ReactNode }) {
   return (
-    <p className="font-mono text-xs tracking-[0.15em] uppercase mb-2" style={{ fontFamily: 'Space Grotesk, monospace', color: '#00d4aa' }}>
+    <p 
+      className="font-mono text-xs tracking-[0.15em] uppercase mb-2 transition-colors duration-200" 
+      style={{ fontFamily: 'var(--font-display), monospace', color: 'var(--accent)' }}
+    >
       {children}
     </p>
   );
@@ -30,19 +33,22 @@ export function SectionLabel({ children }: { children: React.ReactNode }) {
 
 export function SectionTitle({ children }: { children: React.ReactNode }) {
   return (
-    <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-3" style={{ fontFamily: 'Space Grotesk, sans-serif', color: '#e6edf3' }}>
+    <h2 
+      className="text-3xl md:text-4xl font-bold tracking-tight mb-3 transition-colors duration-200" 
+      style={{ fontFamily: 'var(--font-display), sans-serif', color: 'var(--text-primary)' }}
+    >
       {children}
     </h2>
   );
 }
 
 export function Divider() {
-  return <div className="w-12 h-[3px] rounded bg-[#00d4aa] mb-8" />;
+  return <div className="w-12 h-[3px] rounded bg-[var(--accent)] mb-8 transition-colors duration-200" />;
 }
 
 export function PlaceholderImage({ label, className = '' }: { label: string; className?: string }) {
   return (
-    <div className={`bg-[#1c2128] border border-[#30363d] rounded-lg flex items-center justify-center text-[#8b949e] text-sm ${className}`}>
+    <div className={`bg-[var(--bg-card)] border border-[var(--border)] rounded-lg flex items-center justify-center text-[var(--text-secondary)] text-sm transition-all duration-200 ${className}`}>
       {label}
     </div>
   );
@@ -50,7 +56,14 @@ export function PlaceholderImage({ label, className = '' }: { label: string; cla
 
 export function Tag({ children }: { children: React.ReactNode }) {
   return (
-    <span className="inline-block font-mono text-[0.7rem] text-[#00d4aa] bg-[rgba(0,212,170,0.12)] px-2 py-0.5 rounded" style={{ fontFamily: 'Space Grotesk, monospace' }}>
+    <span 
+      className="inline-block font-mono text-[0.7rem] px-2 py-0.5 rounded transition-all duration-200" 
+      style={{ 
+        fontFamily: 'var(--font-display), monospace', 
+        color: 'var(--accent)', 
+        backgroundColor: 'var(--accent-dim)' 
+      }}
+    >
       {children}
     </span>
   );
@@ -58,7 +71,10 @@ export function Tag({ children }: { children: React.ReactNode }) {
 
 export function TechPill({ children }: { children: React.ReactNode }) {
   return (
-    <span className="font-mono text-[0.7rem] text-[#8b949e] bg-[rgba(139,148,158,0.1)] px-2 py-0.5 rounded border border-[rgba(48,54,61,0.6)]" style={{ fontFamily: 'Space Grotesk, monospace' }}>
+    <span 
+      className="font-mono text-[0.7rem] text-[var(--text-secondary)] bg-[var(--bg-secondary)] px-2 py-0.5 rounded border border-[var(--border)] transition-all duration-200" 
+      style={{ fontFamily: 'var(--font-display), monospace' }}
+    >
       {children}
     </span>
   );
@@ -66,7 +82,7 @@ export function TechPill({ children }: { children: React.ReactNode }) {
 
 export function Card({ children, className = '' }: { children: React.ReactNode; className?: string }) {
   return (
-    <div className={`bg-[#1c2128] border border-[#30363d] rounded-xl p-6 card-lift hover:border-[#00d4aa] ${className}`}>
+    <div className={`bg-[var(--bg-card)] border border-[var(--border)] rounded-xl p-6 card-lift hover:border-[var(--accent)] transition-all duration-200 ${className}`}>
       {children}
     </div>
   );
@@ -81,15 +97,22 @@ export function Button({ children, to, href, onClick, variant = 'primary', class
   className?: string;
 }) {
   const base = `inline-flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm font-medium transition-all duration-300 btn-ripple ${className}`;
+  
+  // Custom theme styling applied dynamically via style objects or utility variables
   const styles = variant === 'primary'
-    ? `${base} bg-[#00d4aa] text-[#0d1117] hover:bg-[#00eabb] hover:shadow-[0_0_24px_rgba(0,212,170,0.25)]`
-    : `${base} bg-transparent text-[#e6edf3] border border-[#30363d] hover:border-[#00d4aa] hover:text-[#00d4aa]`;
+    ? `${base} text-[var(--bg-primary)]`
+    : `${base} bg-transparent text-[var(--text-primary)] border border-[var(--border)] hover:border-[var(--accent)] hover:text-[var(--accent)]`;
+
+  const primaryStyle = variant === 'primary' ? {
+    backgroundColor: 'var(--accent)',
+    boxShadow: '0 0 24px var(--accent-glow)'
+  } : undefined;
 
   if (to) {
-    return <a href={to} className={styles}>{children}</a>;
+    return <a href={to} className={styles} style={primaryStyle}>{children}</a>;
   }
   if (href) {
-    return <a href={href} className={styles}>{children}</a>;
+    return <a href={href} className={styles} style={primaryStyle}>{children}</a>;
   }
-  return <button onClick={onClick} className={styles}>{children}</button>;
+  return <button onClick={onClick} className={styles} style={primaryStyle}>{children}</button>;
 }
