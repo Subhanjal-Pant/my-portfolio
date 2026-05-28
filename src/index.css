@@ -3,17 +3,27 @@
 @tailwind utilities;
 
 :root {
-  --bg: #0d1117;
-  --bg-elevated: #161b22;
-  --bg-card: #1c2128;
-  --border: #30363d;
-  --text: #e6edf3;
-  --text-muted: #8b949e;
+  --bg-primary: #ffffff;
+  --bg-secondary: #f4f4f5;
+  --bg-card: #f0f0f0;
+  --border: #d1d5db;
+  --text-primary: #0d1117;
+  --text-secondary: #4b5563;
+
   --accent: #00d4aa;
   --accent-dim: rgba(0, 212, 170, 0.12);
   --accent-glow: rgba(0, 212, 170, 0.25);
   --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-display: 'Space Grotesk', sans-serif;
+}
+
+:root.dark {
+  --bg-primary: #0d1117;
+  --bg-secondary: #010409;
+  --bg-card: #1c2128;
+  --border: #30363d;
+  --text-primary: #e6edf3;
+  --text-secondary: #8b949e;
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -25,8 +35,8 @@ html {
 
 body {
   font-family: var(--font-sans);
-  background: var(--bg);
-  color: var(--text);
+  background: var(--bg-primary);
+  color: var(--text-primary);
   line-height: 1.6;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
@@ -35,13 +45,13 @@ body {
 
 ::selection {
   background: var(--accent-glow);
-  color: var(--text);
+  color: var(--text-primary);
 }
 
 ::-webkit-scrollbar { width: 8px; }
-::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-track { background: var(--bg-primary); }
 ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
-::-webkit-scrollbar-thumb:hover { background: var(--text-muted); }
+::-webkit-scrollbar-thumb:hover { background: var(--text-secondary); }
 
 /* ── Sonar Ripple ── */
 .sonar-container {

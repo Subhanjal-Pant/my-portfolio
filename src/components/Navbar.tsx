@@ -5,6 +5,9 @@ import { navLinks } from '../data/portfolio';
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [darkMode, setDarkMode] = useState(() => {
+    return localStorage.getItem('theme') !== 'light';
+  });
   const location = useLocation();
 
   useEffect(() => {
@@ -16,6 +19,11 @@ export default function Navbar() {
   useEffect(() => {
     setMenuOpen(false);
   }, [location]);
+
+  useEffect(() => {
+    document.documentElement.classList.toggle('dark', darkMode);
+    localStorage.setItem('theme', darkMode ? 'dark' : 'light');
+  }, [darkMode]);
 
   return (
     <>
@@ -47,15 +55,27 @@ export default function Navbar() {
           ))}
         </ul>
 
-        <button
-          className="md:hidden flex flex-col gap-[5px] bg-transparent border-none cursor-pointer p-1"
-          onClick={() => setMenuOpen(!menuOpen)}
-          aria-label="Toggle menu"
-        >
-          <span className={`block w-[22px] h-[2px] bg-[#e6edf3] rounded transition-all duration-300 ${menuOpen ? 'rotate-45 translate-y-[7px]' : ''}`} />
-          <span className={`block w-[22px] h-[2px] bg-[#e6edf3] rounded transition-all duration-300 ${menuOpen ? 'opacity-0' : ''}`} />
-          <span className={`block w-[22px] h-[2px] bg-[#e6edf3] rounded transition-all duration-300 ${menuOpen ? '-rotate-45 -translate-y-[7px]' : ''}`} />
-        </button>
+        <div className="flex items-center gap-3">
+          {/* Dark/Light toggle */}
+          <button
+            onClick={() => setDarkMode(!darkMode)}
+            className="p-1 text-[#8b949e] hover:text-[#e6edf3] transition-colors text-lg"
+            aria-label="Toggle theme"
+          >
+            {darkMode ? '☀️' : '🌙'}
+          </button>
+
+          {/* Hamburger */}
+          <button
+            className="md:hidden flex flex-col gap-[5px] bg-transparent border-none cursor-pointer p-1"
+            onClick={() => setMenuOpen(!menuOpen)}
+            aria-label="Toggle menu"
+          >
+            <span className={`block w-[22px] h-[2px] bg-[#e6edf3] rounded transition-all duration-300 ${menuOpen ? 'rotate-45 translate-y-[7px]' : ''}`} />
+            <span className={`block w-[22px] h-[2px] bg-[#e6edf3] rounded transition-all duration-300 ${menuOpen ? 'opacity-0' : ''}`} />
+            <span className={`block w-[22px] h-[2px] bg-[#e6edf3] rounded transition-all duration-300 ${menuOpen ? '-rotate-45 -translate-y-[7px]' : ''}`} />
+          </button>
+        </div>
       </nav>
 
       <div
