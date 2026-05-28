@@ -160,7 +160,11 @@ export default function About() {
     <>
       {/* Hero */}
       <section ref={heroRef} className="reveal relative py-24 px-6 overflow-hidden">
-        <PlaceholderImage label="Profile Photo" className="w-full h-64 md:h-80 rounded-xl" />
+        <img 
+          src="/cover.jpg" 
+          alt="Subhanjal Pant" 
+          className="w-full h-full object-cover object-center"
+        />
         <div className="max-w-4xl mx-auto mt-8">
           <h1
             className="text-4xl md:text-5xl font-bold tracking-tight"
@@ -179,20 +183,13 @@ export default function About() {
             <SectionTitle>Who I Am</SectionTitle>
             <Divider />
             <p className="text-[#8b949e] leading-relaxed mb-4">
-              I am a Mechanical Engineer graduated from the Institute of Engineering, Pulchowk Campus,
-              Nepal. My passion lies at the intersection of mechanical design, electronics, and
-              intelligent systems that includes building autonomous systems that operate in challenging
-              real-world environments.
+              I am a Mechanical Engineer from the Institute of Engineering, Pulchowk Campus, Nepal, with a passion for autonomous systems that operate at the intersection of mechanical design, electronics, and intelligent algorithms : particularly those built to survive challenging, real-world environments.
             </p>
             <p className="text-[#8b949e] leading-relaxed mb-4">
-              From fabricating pneumatic testbeds and integrating IMU and ToF sensors for real-time
-              state estimation, to deploying autonomous navigation in simulation using ROS2 and the Nav2
-              stack, I build across the full stack robotics stack from hardware to algorithms. My
-              current focus is sensor fusion and EKF-based localisation for GPS-denied field robotics.
+              My work spans the full robotics stack. I have fabricated pneumatic testbeds from scratch, integrated IMU and ToF sensors with onboard Kalman filtering for real-time state estimation as my final year project and deployed autonomous navigation in simulation using ROS2 and the Nav2 stack.Working across that range has taught me that the cleanest algorithm still breaks on a poorly calibrated sensor, and the most robust hardware is wasted without principled state estimation. My current focus is bringing both together — EKF-based localisation and sensor fusion for GPS-denied field robotics.
             </p>
             <p className="text-[#8b949e] leading-relaxed mb-6">
-              Beyond engineering, I am drawn to the broader questions: how machines learn to trust their
-              own perception, and what it means to build systems that operate where humans cannot. I am
+              Beyond engineering, I am drawn to the broader questions: how machines learn to navigate autonmously in complex environments, how they can augment and extend human capabilities, how they can be designed to operate safely and ethically within the limits of their sensors and perception. I am
               actively working toward graduate research in field and space robotics.
             </p>
             <Button href="/Subhanjal_CV.pdf" variant="primary" download>

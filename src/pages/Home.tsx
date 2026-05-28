@@ -40,8 +40,8 @@ function HighlightsStrip() {
   const ref = useReveal();
   const items = [
     { label: 'Projects', value: '5+', path: '/projects' },
-    { label: 'Research Projects', value: '2', path: '/publications' },
-    { label: 'Awards', value: '2', path: '/about' },
+    { label: 'Research Projects', value: '2+', path: '/publications' },
+    { label: 'Honors & Awards', value: '2+', path: '/about' },
   ];
   return (
     <div ref={ref} className="reveal grid grid-cols-3 gap-4 max-w-2xl mx-auto">
@@ -210,7 +210,11 @@ export default function Home() {
                 id="profile-fallback"
                 className="absolute inset-0 rounded-full bg-[#1c2128] border-2 border-[#30363d] items-center justify-center text-[#8b949e] text-xs tracking-wide hidden"
               >
-                profile.jpg
+                <img 
+                  src="/profile.jpg" 
+                  alt="Profile" 
+                  className="w-full h-full object-cover"
+                />
               </div>
             </div>
           </div>
