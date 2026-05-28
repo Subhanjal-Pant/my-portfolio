@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { useReveal, SectionLabel, SectionTitle, Divider, PlaceholderImage, Tag, TechPill } from '../components/Shared';
 import { projects, testimonials } from '../data/portfolio';
 
-const typingWords = ['Engineer', 'Maker', 'Researcher', 'Explorer'];
+const typingWords = ['Engineer', 'Researcher', 'Builder', 'Roboticist', 'Programmer'];
 
 function TypingText() {
   const [wordIndex, setWordIndex] = useState(0);
@@ -40,8 +40,8 @@ function HighlightsStrip() {
   const ref = useReveal();
   const items = [
     { label: 'Projects', value: '5+', path: '/projects' },
-    { label: 'Publications', value: '2', path: '/publications' },
-    { label: 'Awards', value: '6+', path: '/about' },
+    { label: 'Research Projects', value: '2', path: '/publications' },
+    { label: 'Awards', value: '2', path: '/about' },
   ];
   return (
     <div ref={ref} className="reveal grid grid-cols-3 gap-4 max-w-2xl mx-auto">
@@ -60,13 +60,13 @@ function FeaturedProject() {
   const project = projects[0];
   return (
     <div ref={ref} className="reveal max-w-4xl mx-auto">
-      <SectionLabel>Featured Project</SectionLabel>
-      <SectionTitle>ANVESAK</SectionTitle>
+      <SectionLabel>Featured Projects</SectionLabel>
+      <SectionTitle>Autonomous Navigation and Active Perception</SectionTitle>
       <Divider />
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <PlaceholderImage label="ANVESAK USV" className="h-64" />
         <div className="flex flex-col justify-center">
-          <Tag>USV/Robotics</Tag>
+          <Tag>Robotics</Tag>
           <p className="text-[#8b949e] mt-3 mb-4 leading-relaxed">{project.shortDesc}</p>
           <div className="flex flex-wrap gap-2 mb-5">
             {project.tags.map((t) => <TechPill key={t}>{t}</TechPill>)}
@@ -83,9 +83,9 @@ function FeaturedProject() {
 function RecentExperience() {
   const ref = useReveal();
   const experiences = [
-    { date: '2024 – Present', role: 'Research Engineer', org: 'Autonomous Systems Lab' },
+    { date: '2024 – Present', role: 'Research Engineer', org: 'Self Research' },
     { date: '2023 – 2024', role: 'NAST Intern', org: 'Nepal Academy of Science & Technology' },
-    { date: '2022 – 2023', role: 'HVAC Intern', org: 'Thermopharm Engineering' },
+    { date: '2022 – 2023', role: 'NIC', org: 'National Innovation Center' },
   ];
   return (
     <div ref={ref} className="reveal max-w-4xl mx-auto">
@@ -161,35 +161,71 @@ export default function Home() {
           <div className="sonar-ring" />
           <div className="sonar-ring" />
         </div>
-        <div className="relative z-10 max-w-4xl mx-auto w-full">
-          <p className="font-mono text-sm text-[#00d4aa] mb-4 opacity-0 animate-[fadeUp_0.8s_0.3s_forwards]" style={{ fontFamily: 'Space Grotesk, monospace' }}>
-            Hello, I&apos;m
-          </p>
-          <h1 className="text-5xl md:text-7xl font-bold tracking-tight mb-4 opacity-0 animate-[fadeUp_0.8s_0.5s_forwards]" style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
-            Siddhant <span className="text-[#00d4aa]">Yadav</span>
-          </h1>
-          <p className="text-xl md:text-2xl text-[#8b949e] mb-2 opacity-0 animate-[fadeUp_0.8s_0.7s_forwards]">
-            <TypingText />
-          </p>
-          <p className="text-base text-[#8b949e] mb-8 opacity-0 animate-[fadeUp_0.8s_0.8s_forwards]">
-            Mechanical Engineering · Unmanned Systems · Space & Robotics
-          </p>
-          <div className="flex gap-4 opacity-0 animate-[fadeUp_0.8s_0.9s_forwards]">
-            <Link to="/projects" className="inline-flex items-center gap-2 px-6 py-3 rounded-lg text-sm font-medium bg-[#00d4aa] text-[#0d1117] hover:bg-[#00eabb] hover:shadow-[0_0_24px_rgba(0,212,170,0.25)] transition-all duration-300 btn-ripple">
-              View My Work
-            </Link>
-            <Link to="/about" className="inline-flex items-center gap-2 px-6 py-3 rounded-lg text-sm font-medium bg-transparent text-[#e6edf3] border border-[#30363d] hover:border-[#00d4aa] hover:text-[#00d4aa] transition-all duration-300">
-              About Me
-            </Link>
+
+        <div className="relative z-10 max-w-4xl mx-auto w-full flex flex-col-reverse md:flex-row items-center gap-10 md:gap-16">
+
+          {/* Left: text */}
+          <div className="flex-1">
+            <p className="font-mono text-sm text-[#00d4aa] mb-4 opacity-0 animate-[fadeUp_0.8s_0.3s_forwards]" style={{ fontFamily: 'Space Grotesk, monospace' }}>
+              Hello, I&apos;m
+            </p>
+            <h1 className="text-5xl md:text-7xl font-bold tracking-tight mb-4 opacity-0 animate-[fadeUp_0.8s_0.5s_forwards]" style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
+              Subhanjal <span className="text-[#00d4aa]">Pant</span>
+            </h1>
+            <p className="text-xl md:text-2xl text-[#8b949e] mb-2 opacity-0 animate-[fadeUp_0.8s_0.7s_forwards]">
+              <TypingText />
+            </p>
+            <p className="text-base text-[#8b949e] mb-8 opacity-0 animate-[fadeUp_0.8s_0.8s_forwards]">
+              Mechanical Engineering · Autonomous Systems · Robotics and AI
+            </p>
+            <div className="flex gap-4 opacity-0 animate-[fadeUp_0.8s_0.9s_forwards]">
+              <Link to="/projects" className="inline-flex items-center gap-2 px-6 py-3 rounded-lg text-sm font-medium bg-[#00d4aa] text-[#0d1117] hover:bg-[#00eabb] hover:shadow-[0_0_24px_rgba(0,212,170,0.25)] transition-all duration-300 btn-ripple">
+                View My Work
+              </Link>
+              <Link to="/about" className="inline-flex items-center gap-2 px-6 py-3 rounded-lg text-sm font-medium bg-transparent text-[#e6edf3] border border-[#30363d] hover:border-[#00d4aa] hover:text-[#00d4aa] transition-all duration-300">
+                About Me
+              </Link>
+            </div>
           </div>
+
+          {/* Right: profile picture */}
+          <div className="flex-shrink-0 opacity-0 animate-[fadeUp_0.8s_0.6s_forwards]">
+            <div className="relative w-52 h-52 md:w-64 md:h-64">
+              {/* subtle outer glow ring */}
+              <div className="absolute inset-0 rounded-full border-2 border-[#00d4aa] opacity-20 scale-110 pointer-events-none" />
+              {/* slow rotating dashed ring */}
+              <div className="absolute inset-0 rounded-full border border-dashed border-[#00d4aa] opacity-25 pointer-events-none animate-[spin_20s_linear_infinite]" />
+              {/* photo */}
+              <img
+                src="/profile.jpg"
+                alt="Subhanjal Pant"
+                className="w-full h-full rounded-full object-cover object-top border-2 border-[#30363d]"
+                onError={(e) => {
+                  e.currentTarget.style.display = 'none';
+                  document.getElementById('profile-fallback').style.display = 'flex';
+                }}
+              />
+              {/* fallback placeholder shown if image fails to load */}
+              <div
+                id="profile-fallback"
+                className="absolute inset-0 rounded-full bg-[#1c2128] border-2 border-[#30363d] items-center justify-center text-[#8b949e] text-xs tracking-wide hidden"
+              >
+                profile.jpg
+              </div>
+            </div>
+          </div>
+
         </div>
+
         <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-0 animate-[fadeUp_0.8s_1.2s_forwards]">
           <span className="text-[0.65rem] text-[#8b949e] tracking-[0.1em] uppercase">Scroll</span>
           <div className="w-px h-10 bg-gradient-to-b from-[#00d4aa] to-transparent animate-[scrollPulse_2s_ease-in-out_infinite]" />
         </div>
+
         <style>{`
           @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
           @keyframes scrollPulse { 0%, 100% { opacity: 0.3; transform: scaleY(0.6); } 50% { opacity: 1; transform: scaleY(1); } }
+          @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
         `}</style>
       </section>
 

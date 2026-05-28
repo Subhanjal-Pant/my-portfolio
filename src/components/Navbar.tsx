@@ -27,7 +27,7 @@ export default function Navbar() {
         }`}
       >
         <Link to="/" className="text-xl font-bold tracking-tight" style={{ fontFamily: 'Space Grotesk, sans-serif', color: '#00d4aa' }}>
-          SY
+          SP
         </Link>
 
         <ul className="hidden md:flex items-center gap-6">
