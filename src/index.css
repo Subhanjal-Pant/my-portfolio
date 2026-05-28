@@ -3,16 +3,16 @@
 @tailwind utilities;
 
 :root {
-  --bg-primary: #ffffff;
-  --bg-secondary: #f4f4f5;
-  --bg-card: #f0f0f0;
-  --border: #d1d5db;
-  --text-primary: #0d1117;
-  --text-secondary: #4b5563;
+  --bg-primary: #dadcdf;
+  --bg-secondary: #e4e7eb;
+  --bg-card: #ffffff;
+  --border: #c8cdd4;
+  --text-primary: #0d1117;       /* much darker, near black */
+  --text-secondary: #444c56;     /* darker muted text */
 
-  --accent: #00d4aa;
-  --accent-dim: rgba(0, 212, 170, 0.12);
-  --accent-glow: rgba(0, 212, 170, 0.25);
+  --accent: #00916d;             /* darker teal, readable on light bg */
+  --accent-dim: rgba(0, 145, 109, 0.12);
+  --accent-glow: rgba(0, 145, 109, 0.25);
   --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-display: 'Space Grotesk', sans-serif;
 }
@@ -24,6 +24,10 @@
   --border: #30363d;
   --text-primary: #e6edf3;
   --text-secondary: #8b949e;
+
+  --accent: #00d4aa;
+  --accent-dim: rgba(0, 212, 170, 0.12);
+  --accent-glow: rgba(0, 212, 170, 0.25);
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -41,6 +45,7 @@ body {
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  transition: background 0.3s ease, color 0.3s ease;
 }
 
 ::selection {
@@ -169,7 +174,7 @@ body {
 
 .card-lift:hover {
   transform: translateY(-6px);
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
 }
 
 /* ── Button ripple ── */
@@ -194,3 +199,13 @@ body {
 /* ── Star rating ── */
 .star-filled { color: #f59e0b; }
 .star-empty { color: var(--border); }
+
+/* ── Smooth theme transition for all elements ── */
+*, *::before, *::after {
+  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+}
+
+/* But don't transition animations and transforms */
+.sonar-ring, .typing-cursor, .reveal, .carousel-track {
+  transition: none;
+}
